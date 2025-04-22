@@ -6,6 +6,7 @@ variables:
   SUPPORTED_PLATFORMS: linux/amd64,linux/arm64
 
 publish-base:
+  stage: publish-base
   image: docker:24.0.5
   tags:
     - docker

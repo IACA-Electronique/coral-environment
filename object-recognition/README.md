@@ -47,3 +47,7 @@ DISPLAY=:0 python3 detect.py --tracker sort --videofmt=jpeg --width 1920 --heigh
 ```
 
 > **Note**: Some parameters need to be adjusted according to your execution context.
+
+
+## See also
+* https://github.com/IACA-Dev/example-object-tracker

@@ -13,16 +13,16 @@ Each configuration contains a `README.md` file with more details.
 
 ## ✅ Validation
 
-Currently, these configurations have been tested in Raspberry CM5 with Raspi-OS arm64 *November 19th 2024* release. 
+Currently, these configurations have been tested in Raspberry CM5 with Raspi-OS arm64 *November 19, 2024* release.
 
 ___
 
-## See
+## See Also
 
 * https://coral.ai/docs/m2/get-started/#pycoral-on-win
 * https://www.jeffgeerling.com/blog/2023/testing-coral-tpu-accelerator-m2-or-pcie-docker
 * https://github.com/google-coral/edgetpu/issues/611
 
-## 📜 License : `GNU GENERAL PUBLIC LICENSE`
+## 📜 License: `GNU GENERAL PUBLIC LICENSE`
 
 See [details](LICENSE).

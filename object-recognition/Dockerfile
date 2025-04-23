@@ -1,4 +1,4 @@
-FROM coral-tpu-env-base
+FROM iacaelectronique/coral-tpu-env-base
 
 RUN git clone https://github.com/IACA-Dev/example-object-tracker.git && \
         cd example-object-tracker && \

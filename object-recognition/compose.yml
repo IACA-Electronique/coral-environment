@@ -1,0 +1,24 @@
+# This docker compose file has been tested on IACA OS running on CM5 with X11 environment.
+# It may need to be adapted to work in different contexts:
+# - DISPLAY environment variable might need adjustment
+# - Device mappings (/dev/video0, /dev/apex_0) might differ
+# - X11 configuration and paths might vary
+# - Privileges and permissions might need modifications
+
+services:
+  coral:
+    image: iacaelectronique/coral-tpu-env-object-recognition
+    environment:
+      - DISPLAY=:0
+      - XAUTHORITY=/mnt/xauthority.d/Xauthority
+    privileged: true
+    stdin_open: true
+    tty: true
+    ports:
+      - 33:22
+    volumes:
+      - /tmp/:/mnt/xauthority.d
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /dev:/dev
+      - /dev/video0:/dev/video0
+      - /dev/apex_0:/dev/apex_0

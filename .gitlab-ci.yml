@@ -1,0 +1,63 @@
+stages:
+  - publish-base
+  - publish-object-recognition
+
+variables:
+  PROJECT_NAME: coral-tpu-env
+  SUPPORTED_PLATFORMS: linux/arm64
+
+publish-base:
+  stage: publish-base
+  image: docker:24.0.5
+  tags:
+    - docker
+  variables:
+    TAG_TITLE: ${CI_COMMIT_REF_NAME}
+    IMAGE_NAME: ${PROJECT_NAME}-base
+  only:
+    - tags
+  before_script:
+    - apk update
+    - apk add bash
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+  script:
+    - cd base
+    - docker buildx create --name container --driver=docker-container --driver-opt network=host
+    - |
+      docker buildx build --builder=container --platform=${SUPPORTED_PLATFORMS} \
+      -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG_TITLE} \
+      -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest \
+      --push .
+  after_script:
+    - docker buildx rm container || true
+    - docker logout
+    - docker system prune -f
+
+publish-object-recognition:
+  stage: publish-object-recognition
+  image: docker:24.0.5
+  needs:
+    - publish-base
+  tags:
+    - docker
+  variables:
+    TAG_TITLE: ${CI_COMMIT_REF_NAME}
+    IMAGE_NAME: ${PROJECT_NAME}-object-recognition
+  only:
+    - tags
+  before_script:
+    - apk update
+    - apk add bash
+    - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+  script:
+    - cd object-recognition
+    - docker buildx create --name container --driver=docker-container --driver-opt network=host
+    - |
+      docker buildx build --builder=container --platform=${SUPPORTED_PLATFORMS} \
+      -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:${TAG_TITLE} \
+      -t ${DOCKERHUB_USERNAME}/${IMAGE_NAME}:latest \
+      --push .
+  after_script:
+    - docker buildx rm container || true
+    - docker logout
+    - docker system prune -f

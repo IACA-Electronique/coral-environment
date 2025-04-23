@@ -4,7 +4,7 @@ stages:
 
 variables:
   PROJECT_NAME: coral-tpu-env
-  SUPPORTED_PLATFORMS: linux/amd64,linux/arm64
+  SUPPORTED_PLATFORMS: linux/arm64
 
 publish-base:
   stage: publish-base

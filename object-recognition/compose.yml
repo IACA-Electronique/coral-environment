@@ -7,7 +7,7 @@
 
 services:
   coral:
-    image: coral-tpu-env-object-recognition
+    image: iacaelectronique/coral-tpu-env-object-recognition
     environment:
       - DISPLAY=:0
       - XAUTHORITY=/mnt/xauthority.d/Xauthority

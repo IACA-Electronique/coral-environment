@@ -50,7 +50,7 @@ publish-object-recognition:
     - apk add bash
     - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
   script:
-    - cd base
+    - cd object-recognition
     - docker buildx create --name container --driver=docker-container --driver-opt network=host
     - |
       docker buildx build --builder=container --platform=${SUPPORTED_PLATFORMS} \

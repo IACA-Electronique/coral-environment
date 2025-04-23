@@ -4,10 +4,10 @@ This repository contains [Coral TPU](https://coral.ai/products/) docker environm
 
 Repository currently comes in these configurations :
 
-| Name                 | Parent | Description                                           |
-|----------------------|--------|-------------------------------------------------------|
-| `base`               | `-`    | Coral base environment                                |
-| `object-recognition` | `base` | Coral environment ready for object-recognition.       |
+| Name                 | Parent | Description                                     | Dockerhub                                                                                                                                 |
+|----------------------|--------|-------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------|
+| `base`               | `-`    | Coral base environment                          | [iacaelectronique/coral-tpu-env-base](https://hub.docker.com/r/iacaelectronique/coral-tpu-env-base)  `✅ arm64`                            |
+| `object-recognition` | `base` | Coral environment ready for object-recognition. | [iacaelectronique/coral-tpu-env-object-recognition](https://hub.docker.com/r/iacaelectronique/coral-tpu-env-object-recognition) `✅ arm64` |
 
 Each configuration contains a `README.md` file with more details.
 
